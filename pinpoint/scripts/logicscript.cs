@@ -2,8 +2,8 @@ using Godot;
 using System;
 //using mrousavy; //mrousavyglobalhotkey package
 
-using GlobalHotKeys; // the other globalhotkey pavkage 
-using GlobalHotKeys.Native.Types;
+//using GlobalHotKeys; // the other globalhotkey nuget package by 8
+//using GlobalHotKeys.Native.Types;
 
 
 
@@ -25,28 +25,32 @@ public partial class logicscript : Node2D
 	private float leftFlipperHistory;
 	private float rightFlipperHistory;
 
-	private HotKeyManager hotKeyManager;
+	private float tickEvery = 5; //after every x gets incremented, play a sound
+	private float stopTickAt = 150; //if value is at or beyond this value, stop making sounds.
+
+	//private HotKeyManager hotKeyManager;
 
 	//private HotKey leftButton;
-	private IRegistration leftButton;
-	private IRegistration NotPressed;
+	//private IRegistration leftButton;
+	//private IRegistration NotPressed;
 
-	private IDisposable subscription;
+	//private IDisposable subscription;
 
 	//private HotKey key = new HotKey; 
 
-	// Called when the node enters the scene tree for the first time.
+
+	private GlobalInputCSharp GlobalInput; //darnoman global input plugin
 
 
 
-
-	public override void _Ready()
+    // Called when the node enters the scene tree for the first time.
+    public override void _Ready()
 	{
 
-		//var key = new HotKey(mod, Key.S, this);
+        //var key = new HotKey(mod, Key.S, this);
 
 
-
+        /*
 		hotKeyManager = new HotKeyManager();
 		subscription = hotKeyManager.HotKeyPressed.Subscribe(HotKeyPressed); //i dont fukin know what 'subscribing' does atm
 																			 //oh god, it finally sorta worked after making (private IDisposable subscription;).
@@ -59,8 +63,16 @@ public partial class logicscript : Node2D
 																	  //nvm nvm. tried 0 modifyier with the example code in a seperate test project and it works 
 
 		NotPressed = hotKeyManager.Register(0, 0);
-		
-	}
+		*/
+
+
+
+        //GlobalInput = GetNode("/root/GlobalInput/GlobalInputCSharp") //example in the readme (dosent work)
+        //GlobalInput = GetNode<GlobalInputCSharp>("/root/GlobalInput/GlobalInputCSharp"); // exapmple in the "charp_example" folder in the "examples" folder in the github
+
+        GlobalInput = GetNode<GlobalInputCSharp>("/root/logicnode/GlobalInputCSharp"); //HOLY SHIT IT WORKS.
+																					   //i needed to add the "GlobalInputCSharp.tscn" file into the main scene from the "autoloads" folder.
+    }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _Process(double delta)
@@ -69,8 +81,8 @@ public partial class logicscript : Node2D
 
 		//-----------------INPUT AFFECTING THE BOOLEANS------------------------------
 
-		/*
-        if (Input.IsActionPressed("leftFlipperButton") || hotKeyManager.HotKeyPressed.Equals(leftButton) ) //idk im just shooting at the dark here
+		
+        if (GlobalInput.IsActionPressed("leftFlipperButton")) 
 		{
 			leftFlipperActive = true;
 		}
@@ -79,7 +91,7 @@ public partial class logicscript : Node2D
 			leftFlipperActive = false;
 		}
 
-		if (Input.IsActionPressed("rightFlipperButton"))
+		if (GlobalInput.IsActionPressed("rightFlipperButton"))
 		{
 			rightFlipperActive = true;
 		}
@@ -87,7 +99,13 @@ public partial class logicscript : Node2D
 		{
 			rightFlipperActive = false;
 		}
-		*/
+		
+
+
+
+
+
+
 
 		/*
         if (Input.IsActionPressed("leftFlipperButton") == false)
@@ -108,7 +126,8 @@ public partial class logicscript : Node2D
 
 		 
 
-        //----------------------
+        //----------MAIN VALUE LOGIC(?)------------
+
         if (leftFlipperActive == false) //flipper is down (about to aim)
 		{
 
@@ -122,6 +141,12 @@ public partial class logicscript : Node2D
 			else if (leftFlipValIsReset == true)
 			{
 				leftFlipperValue += incrementSpeed * (float)delta; //start incrementing once the value is properly reset.
+
+				if (IsDivisible(leftFlipperValue,tickEvery) == true && leftFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
+																									  //the stoptick thing is a bit inconsistent, but it works.
+				{
+					GetNode<AudioStreamPlayer2D>("/root/logicnode/leftFlip/audioPlayer").Play();
+				}
 			}
 
 		}
@@ -146,12 +171,17 @@ public partial class logicscript : Node2D
             else if (rightFlipValIsReset == true)
             {
                 rightFlipperValue += incrementSpeed * (float)delta; //start incrementing once the value is properly reset.
+
+                if (IsDivisible(rightFlipperValue, tickEvery) == true && rightFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
+                {
+                    GetNode<AudioStreamPlayer2D>("/root/logicnode/rightFlip/audioPlayer").Play();
+                }
             }
 
         }
         else if (rightFlipperActive == true) //if flipper is flipped (during cradle/after shooting ball)
         {
-            rightFlipperHistory = leftFlipperValue; //assign current calue to flipper history
+            rightFlipperHistory = rightFlipperValue; //assign current calue to flipper history
             rightFlipValIsReset = false; //make isreset false so that the value can reset once flipper is put back down.
         }
 
@@ -160,13 +190,14 @@ public partial class logicscript : Node2D
 
         //-------------------UPDATING GUI WITH THE VALUES-------------------------
 
-        GetNode<Label>(@"/root/logicnode/leftFlip/value").Text = leftFlipperValue.ToString();
-		GetNode<Label>(@"/root/logicnode/rightFlip/value").Text = rightFlipperValue.ToString();
+        GetNode<Label>(@"/root/logicnode/leftFlip/value").Text = leftFlipperValue.ToString("0");
+		GetNode<Label>(@"/root/logicnode/rightFlip/value").Text = rightFlipperValue.ToString("0");
 
-		GetNode<Label>(@"/root/logicnode/leftFlip/value/history").Text = leftFlipperHistory.ToString();
-	}
+		GetNode<Label>(@"/root/logicnode/leftFlip/value/history").Text = leftFlipperHistory.ToString("0");
+        GetNode<Label>(@"/root/logicnode/rightFlip/value/history").Text = rightFlipperHistory.ToString("0");
+    }
 
-
+    /*
 	private void HotKeyPressed(HotKey hotkeyparam) //this needs to be void
 	{
 		GD.Print("hotkeypressed");
@@ -182,12 +213,12 @@ public partial class logicscript : Node2D
             rightflipperAction(); //runs if the globahotkey detected is the left button
         }
 
-        /*
+        
         if (!Input.IsActionPressed("leftFlipperButton"))
         {
             leftFlipperActive = false;
         }
-		*/ //currently shooting at the dark. but it dosent work here. maybe it works on process..?
+		 //currently shooting at the dark. but it dosent work here. maybe it works on process..?
            //nope. dosent work.
            //maybe a "leftbuttonnotpressed" hotkey object that has 0 in both parameter values?
 
@@ -210,7 +241,7 @@ public partial class logicscript : Node2D
 			leftFlipperActive = true; //these values are made public cuz the hotkeypressed() function where these funcions are called in NEEDS to be void.
 									  //also idk how to give it parameters with how the nuget package is used.
 		}
-		else /*if (Input.IsActionJustReleased("leftFlipperButton"))*/
+		else 
 
         {
 			//leftFlipperActive = false; // leaving this in will make it false the entire time. leaving it out only allows it to be active once. (tldr leftflipperactive dosent become false again when flipper gpes back down)
@@ -234,6 +265,24 @@ public partial class logicscript : Node2D
         {
             //rightFlipperActive = false;
         }
+    }
+	  
+	*/
+
+    private bool IsDivisible(float valueToCheck, float tickEvery) //https://stackoverflow.com/a/3216515
+    {
+		bool boolToReturn;
+
+		if (valueToCheck % tickEvery == 0) //if its a multiple / divisible
+		{
+			boolToReturn = true;
+		}
+        else //if it isnt 0 (not multiple / divisible)
+		{
+            boolToReturn = false;
+        }
+
+		return boolToReturn;
     }
 
 }

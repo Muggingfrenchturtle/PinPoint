@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://dvmt8c2t8l1ft"]
+[gd_scene load_steps=4 format=3 uid="uid://dvmt8c2t8l1ft"]
 
 [ext_resource type="Script" path="res://scripts/logicscript.cs" id="1_or8g8"]
+[ext_resource type="PackedScene" uid="uid://dsxny04n01a2n" path="res://addons/global_input/autoloads/global_input_csharp/GlobalInputCSharp.tscn" id="2_7kw0i"]
+[ext_resource type="AudioStream" uid="uid://dn8bvvxcxopxb" path="res://sounds/finger-snap-179180.mp3" id="2_xiuch"]
 
 [node name="logicnode" type="Node2D"]
 script = ExtResource("1_or8g8")
@@ -30,6 +32,10 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 20
 text = "100"
 metadata/_edit_use_anchors_ = true
+
+[node name="audioPlayer" type="AudioStreamPlayer2D" parent="leftFlip"]
+position = Vector2(0, 220)
+stream = ExtResource("2_xiuch")
 
 [node name="rightFlip" type="Node" parent="."]
 
@@ -62,3 +68,9 @@ theme_override_font_sizes/font_size = 20
 text = "100"
 horizontal_alignment = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="audioPlayer" type="AudioStreamPlayer2D" parent="rightFlip"]
+position = Vector2(500, 220)
+stream = ExtResource("2_xiuch")
+
+[node name="GlobalInputCSharp" parent="." instance=ExtResource("2_7kw0i")]

@@ -10,20 +10,29 @@ config_version=5
 
 [application]
 
-config/name="Godot Projects"
+config/name="pinpoint"
 run/main_scene="res://main.tscn"
 config/features=PackedStringArray("4.1", "C#", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[autoload]
+
+GlobalInput="*res://addons/global_input/autoloads/global_input_gdscript/GlobalInputGDScript.tscn"
 
 [display]
 
 window/size/viewport_width=500
 window/size/viewport_height=250
 window/size/always_on_top=true
+window/size/transparent=true
 
 [dotnet]
 
 project/assembly_name="Godot Projects"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/global_input/plugin.cfg")
 
 [input]
 
@@ -42,3 +51,4 @@ rightFlipperButton={
 
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+viewport/transparent_background=true
