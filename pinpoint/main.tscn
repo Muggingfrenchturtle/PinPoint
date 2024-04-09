@@ -1,0 +1,64 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvmt8c2t8l1ft"]
+
+[ext_resource type="Script" path="res://scripts/logicscript.cs" id="1_or8g8"]
+
+[node name="logicnode" type="Node2D"]
+script = ExtResource("1_or8g8")
+
+[node name="leftFlip" type="Node" parent="."]
+
+[node name="value" type="Label" parent="leftFlip"]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+offset_right = 69.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "100"
+
+[node name="history" type="Label" parent="leftFlip/value"]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.284
+anchor_right = 0.102
+anchor_bottom = 0.464
+offset_top = -41.472
+offset_right = 27.962
+offset_bottom = -20.912
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+metadata/_edit_use_anchors_ = true
+
+[node name="rightFlip" type="Node" parent="."]
+
+[node name="value" type="Label" parent="rightFlip"]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -69.0
+offset_top = -58.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "100"
+horizontal_alignment = 2
+
+[node name="history" type="Label" parent="rightFlip/value"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.492754
+anchor_top = 0.284
+anchor_right = 0.594754
+anchor_bottom = 0.464
+offset_top = -41.472
+offset_right = 27.962
+offset_bottom = -20.912
+grow_vertical = 2
+theme_override_font_sizes/font_size = 20
+text = "100"
+horizontal_alignment = 2
+metadata/_edit_use_anchors_ = true
