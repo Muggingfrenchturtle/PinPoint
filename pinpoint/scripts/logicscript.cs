@@ -101,7 +101,7 @@ public partial class logicscript : Node2D
 		}
 		
 
-		//--------------BORDER / BORDERLESS WINDOW TOGGLE----------------------------
+		//--------------BORDER / BORDERLESS WINDOW TOGGLEse,----------------------------
 		if (GlobalInput.IsActionPressed("settingsModifier") && GlobalInput.IsActionJustPressed("settingsBorderToggle") ) 
 		{
 			GD.Print("keys pressed");
@@ -172,7 +172,7 @@ public partial class logicscript : Node2D
 			{
 				leftFlipperValue += incrementSpeed * (float)delta; //start incrementing once the value is properly reset.
 
-				if (IsDivisible(leftFlipperValue,tickEvery) == true && leftFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
+				if (IsDivisible( (int)leftFlipperValue,tickEvery) == true && leftFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
 																									  //the stoptick thing is a bit inconsistent, but it works.
 				{
 					GetNode<AudioStreamPlayer2D>("/root/logicnode/leftFlip/audioPlayer").Play();
@@ -202,7 +202,7 @@ public partial class logicscript : Node2D
             {
                 rightFlipperValue += incrementSpeed * (float)delta; //start incrementing once the value is properly reset.
 
-                if (IsDivisible(rightFlipperValue, tickEvery) == true && rightFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
+                if (IsDivisible( (int)rightFlipperValue, tickEvery) == true && rightFlipperValue < stopTickAt) //if value is a multiple of tickevery, play a sound
                 {
                     GetNode<AudioStreamPlayer2D>("/root/logicnode/rightFlip/audioPlayer").Play();
                 }
@@ -299,7 +299,7 @@ public partial class logicscript : Node2D
 	  
 	*/
 
-    private bool IsDivisible(float valueToCheck, float tickEvery) //https://stackoverflow.com/a/3216515
+    private bool IsDivisible(int valueToCheck, float tickEvery) //https://stackoverflow.com/a/3216515
     {
 		bool boolToReturn;
 
