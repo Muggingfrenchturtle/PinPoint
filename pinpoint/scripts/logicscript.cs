@@ -101,30 +101,60 @@ public partial class logicscript : Node2D
 		}
 		
 
+		//--------------BORDER / BORDERLESS WINDOW TOGGLE----------------------------
+		if (GlobalInput.IsActionPressed("settingsModifier") && GlobalInput.IsActionJustPressed("settingsBorderToggle") ) 
+		{
+			GD.Print("keys pressed");
+
+            //GD.Print("bordervalue = " + DisplayServer.WindowFlags.Borderless.ToString()); //tf, the value is literally "borderless"?
+																							//dosent seem like a value.
+
+            GD.Print("bordervalue = " + DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless) ); //bruh. yeah. in order to modify windowflags. you need to use get() and set().
+																											 //which, in retrospect, makes sense ig.
+																											 //making these values freely directly acessible would be bad cuz.. idk but its bad.
+
+
+            if (DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless) == false)
+			{
+				//DisplayServer.WindowFlags.Borderless = false; //window_flag_borderless
+																//https://docs.godotengine.org/en/stable/classes/class_displayserver.html
+																//it cant be set like this.
+
+				DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true); //huh. just sifting through the intellicode menus for a few moments can sometimes lead to finding the answer.
+                                                                                         //wierd way to set a value tho, but idk anything about proper code writing practices, so what do i know.
+                GD.Print("keys pressed 2");
+
+            }
+			else if (/*DisplayServer.WindowFlags.Borderless.Equals(1)*/ DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless) == true)
+            {
+                DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false); //inefficient, but readable for me in the future.
+                GD.Print("keys pressed 2");
+            }
+
+        }
 
 
 
 
 
-
-		/*
+        /*
         if (Input.IsActionPressed("leftFlipperButton") == false)
         {
             leftFlipperActive = false;
         }
-		*/ //nope. dosent work.
+        */ //nope. dosent work.
 
-		/*
+        /*
         if (leftButton.)
         {
-			GD.Print("hi");
+            GD.Print("hi");
             leftFlipperActive = false;
         }
-		*/
+        */
 
-		//NotPressed.Equals(true); //huh, no syntax error.
+        //NotPressed.Equals(true); //huh, no syntax error.
 
-		 
+
 
         //----------MAIN VALUE LOGIC(?)------------
 
