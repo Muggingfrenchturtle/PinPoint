@@ -1,0 +1,99 @@
+[gd_scene load_steps=2 format=3 uid="uid://n4mdhr8u501l"]
+
+[ext_resource type="Script" path="res://scripts/settingsmenuscript.cs" id="1_52tos"]
+
+[node name="settingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -250.0
+offset_top = -125.0
+offset_right = -250.0
+offset_bottom = -125.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_52tos")
+
+[node name="incSpeedLabel" type="Label" parent="."]
+offset_left = -112.0
+offset_top = -40.0
+offset_right = 18.0
+offset_bottom = -14.0
+theme_override_font_sizes/font_size = 10
+text = "increment speed : 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="incSpeedTextBox" type="TextEdit" parent="."]
+offset_left = 19.0
+offset_top = -41.0
+offset_right = 97.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 12
+placeholder_text = "value
+"
+
+[node name="incSpeedEnterButton" type="Button" parent="."]
+offset_left = 103.0
+offset_top = -40.0
+offset_right = 128.0
+offset_bottom = -15.0
+theme_override_font_sizes/font_size = 12
+text = ">"
+
+[node name="tickEveryLabel" type="Label" parent="."]
+offset_left = -112.0
+offset_top = -12.0
+offset_right = 18.0
+offset_bottom = 14.0
+theme_override_font_sizes/font_size = 10
+text = "tick every : 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="tickEveryTextBox" type="TextEdit" parent="."]
+offset_left = 19.0
+offset_top = -11.0
+offset_right = 97.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 12
+placeholder_text = "value
+"
+
+[node name="tickEveryEnterButton" type="Button" parent="."]
+offset_left = 103.0
+offset_top = -10.0
+offset_right = 128.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 12
+text = ">"
+
+[node name="stopTickAtLabel" type="Label" parent="."]
+offset_left = -112.0
+offset_top = 19.0
+offset_right = 18.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 10
+text = "stop ticking at : 00"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="stopTickAtTextBox" type="TextEdit" parent="."]
+offset_left = 19.0
+offset_top = 19.0
+offset_right = 97.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 12
+placeholder_text = "value
+"
+
+[node name="stopTickAtEnterButton" type="Button" parent="."]
+offset_left = 103.0
+offset_top = 20.0
+offset_right = 128.0
+offset_bottom = 45.0
+theme_override_font_sizes/font_size = 12
+text = ">"
