@@ -28,7 +28,8 @@ public partial class logicscript : Node2D
 	public float tickEvery = 5; //after every x gets incremented, play a sound
 	public float stopTickAt = 150; //if value is at or beyond this value, stop making sounds.
 
-	public bool isBordered; //for letting the settings menu know if the app is in bordered or borderless mode
+	public bool isBordered = true; //for letting the settings menu know if the app is in bordered or borderless mode
+								   //is true because the program starts in bordered mode.
 
 	//private HotKeyManager hotKeyManager;
 
