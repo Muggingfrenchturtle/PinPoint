@@ -23,4 +23,5 @@ i apologize to the more competent devs out there who *might* be planning to make
 if someone decides to release such a program (but better), i am very willing to change the name of this app and give *you* the name. cuz ngl i feel guilty giving this app such a (very cool) name.
 
 (Currently limited to only cradle/trap shots. on-the-fly shots is uh, idk how to make something like this work on those without literally connecting the app to the virtual pinball game and detecting if the ball is touching the flipper)
+
 i might update the app in the future if i feel like it
