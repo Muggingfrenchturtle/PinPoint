@@ -13,7 +13,7 @@ public partial class logicscript : Node2D
 	private float leftFlipperValue;
 	private float rightFlipperValue;
 
-	private float incrementSpeed = 60; //number per second
+	public float incrementSpeed = 60; //number per second
 									   //10 is default.
 
 	public bool leftFlipperActive; //making this public allows hotkeypressed functions to change this value while being void
@@ -25,8 +25,11 @@ public partial class logicscript : Node2D
 	private float leftFlipperHistory;
 	private float rightFlipperHistory;
 
-	private float tickEvery = 5; //after every x gets incremented, play a sound
-	private float stopTickAt = 150; //if value is at or beyond this value, stop making sounds.
+	public float tickEvery = 5; //after every x gets incremented, play a sound
+	public float stopTickAt = 150; //if value is at or beyond this value, stop making sounds.
+
+	public bool isBordered = true; //for letting the settings menu know if the app is in bordered or borderless mode
+								   //is true because the program starts in bordered mode.
 
 	//private HotKeyManager hotKeyManager;
 
@@ -72,6 +75,7 @@ public partial class logicscript : Node2D
 
         GlobalInput = GetNode<GlobalInputCSharp>("/root/logicnode/GlobalInputCSharp"); //HOLY SHIT IT WORKS.
 																					   //i needed to add the "GlobalInputCSharp.tscn" file into the main scene from the "autoloads" folder.
+																					   //and it seems like we basically getnode the script of the plugin.
     }
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -121,13 +125,15 @@ public partial class logicscript : Node2D
 																//it cant be set like this.
 
 				DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, true); //huh. just sifting through the intellicode menus for a few moments can sometimes lead to finding the answer.
-                                                                                         //wierd way to set a value tho, but idk anything about proper code writing practices, so what do i know.
+																						 //wierd way to set a value tho, but idk anything about proper code writing practices, so what do i know?
+				isBordered = false; //value for settingsmenuscript
                 GD.Print("keys pressed 2");
 
             }
 			else if (/*DisplayServer.WindowFlags.Borderless.Equals(1)*/ DisplayServer.WindowGetFlag(DisplayServer.WindowFlags.Borderless) == true)
             {
                 DisplayServer.WindowSetFlag(DisplayServer.WindowFlags.Borderless, false); //inefficient, but readable for me in the future.
+				isBordered = true;
                 GD.Print("keys pressed 2");
             }
 

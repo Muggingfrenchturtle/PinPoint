@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvmt8c2t8l1ft"]
+[gd_scene load_steps=5 format=3 uid="uid://dvmt8c2t8l1ft"]
 
 [ext_resource type="Script" path="res://scripts/logicscript.cs" id="1_or8g8"]
 [ext_resource type="PackedScene" uid="uid://dsxny04n01a2n" path="res://addons/global_input/autoloads/global_input_csharp/GlobalInputCSharp.tscn" id="2_7kw0i"]
 [ext_resource type="AudioStream" uid="uid://dn8bvvxcxopxb" path="res://sounds/finger-snap-179180.mp3" id="2_xiuch"]
+[ext_resource type="PackedScene" uid="uid://n4mdhr8u501l" path="res://settings_menu.tscn" id="3_3td8k"]
 
 [node name="logicnode" type="Node2D"]
 script = ExtResource("1_or8g8")
@@ -72,5 +73,18 @@ metadata/_edit_use_anchors_ = true
 [node name="audioPlayer" type="AudioStreamPlayer2D" parent="rightFlip"]
 position = Vector2(500, 220)
 stream = ExtResource("2_xiuch")
+
+[node name="menu and settings" type="Node" parent="."]
+editor_description = "control nodes need to be children of a \"Node\" in order to anchor properly. 
+
+prob because node2Ds have actual transforms. (in this case, anchoring in logicnode will just anchor to the upper left corner)
+
+while \"node\" just uses the viewport for anchoring or something "
+
+[node name="settingsMenu" parent="menu and settings" instance=ExtResource("3_3td8k")]
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="GlobalInputCSharp" parent="." instance=ExtResource("2_7kw0i")]
