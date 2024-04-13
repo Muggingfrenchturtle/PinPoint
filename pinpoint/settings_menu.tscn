@@ -18,6 +18,7 @@ grow_vertical = 2
 script = ExtResource("1_52tos")
 
 [node name="incSpeedLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -112.0
 offset_top = -40.0
 offset_right = 18.0
@@ -28,6 +29,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="incSpeedTextBox" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -41.0
 offset_right = 97.0
@@ -37,6 +39,7 @@ placeholder_text = "new value
 "
 
 [node name="incSpeedEnterButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 103.0
 offset_top = -40.0
 offset_right = 128.0
@@ -45,6 +48,7 @@ theme_override_font_sizes/font_size = 12
 text = ">"
 
 [node name="tickEveryLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -112.0
 offset_top = -12.0
 offset_right = 18.0
@@ -55,6 +59,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="tickEveryTextBox" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = 19.0
 offset_top = -11.0
 offset_right = 97.0
@@ -64,6 +69,7 @@ placeholder_text = "new value
 "
 
 [node name="tickEveryEnterButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 103.0
 offset_top = -10.0
 offset_right = 128.0
@@ -72,6 +78,7 @@ theme_override_font_sizes/font_size = 12
 text = ">"
 
 [node name="stopTickAtLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -112.0
 offset_top = 19.0
 offset_right = 18.0
@@ -82,6 +89,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="stopTickAtTextBox" type="TextEdit" parent="."]
+layout_mode = 0
 offset_left = 19.0
 offset_top = 19.0
 offset_right = 97.0
@@ -91,6 +99,7 @@ placeholder_text = "new value
 "
 
 [node name="stopTickAtEnterButton" type="Button" parent="."]
+layout_mode = 0
 offset_left = 103.0
 offset_top = 20.0
 offset_right = 128.0

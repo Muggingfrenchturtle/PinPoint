@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/logicscript.cs" id="1_or8g8"]
 [ext_resource type="PackedScene" uid="uid://dsxny04n01a2n" path="res://addons/global_input/autoloads/global_input_csharp/GlobalInputCSharp.tscn" id="2_7kw0i"]
-[ext_resource type="AudioStream" uid="uid://dn8bvvxcxopxb" path="res://sounds/finger-snap-179180.mp3" id="2_xiuch"]
+[ext_resource type="AudioStream" uid="uid://yv4gvpi00vuj" path="res://sounds/shorter fingersnap without that quarter of a second of buildup.mp3" id="2_of4op"]
 [ext_resource type="PackedScene" uid="uid://n4mdhr8u501l" path="res://settings_menu.tscn" id="3_3td8k"]
 
 [node name="logicnode" type="Node2D"]
@@ -36,7 +36,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="audioPlayer" type="AudioStreamPlayer2D" parent="leftFlip"]
 position = Vector2(0, 220)
-stream = ExtResource("2_xiuch")
+stream = ExtResource("2_of4op")
 
 [node name="rightFlip" type="Node" parent="."]
 
@@ -72,7 +72,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="audioPlayer" type="AudioStreamPlayer2D" parent="rightFlip"]
 position = Vector2(500, 220)
-stream = ExtResource("2_xiuch")
+stream = ExtResource("2_of4op")
 
 [node name="menu and settings" type="Node" parent="."]
 editor_description = "control nodes need to be children of a \"Node\" in order to anchor properly. 
