@@ -13,7 +13,7 @@ Also (probably) makes flipper shots more measurable rather than purely muscle me
 Allows more specific documentation of shot locations than just a vague "center of flipper but a bit late-ish". 
 You can now say "flipper center, 5 clicks, 53."
 
-now, of course, muscle memory and honing skills via actually playing and getting a feel of things is always better than depending on some program. 
+now, of course, muscle memory and honing skills via actually playing and getting a feel of things is always better than depending on some rough program. 
 
 also this program dosent help in on the fly shots at all, and there are plenty of times where you have to do on the fly shots, and cradling just isnt an option. (see disclaimer)
 
