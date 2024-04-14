@@ -8,7 +8,7 @@ this is about pinball btw
 
 -------
 
-(probably) allows more precision by making shot rhythm (probably) easier to hone.
+an app made to run during gameplay of virtual pinball and (probably) allows more precision by making shot rhythm (probably) easier to hone.
 
 Also (probably) makes flipper shots more measurable rather than purely muscle memory/feeling.
 
