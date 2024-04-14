@@ -1,5 +1,7 @@
 PinPoint : cool name, kinda boring app.
 
+this is about pinball btw
+
 -------
 
 **Windows key + ] toggles between bordered and borderless mode**
