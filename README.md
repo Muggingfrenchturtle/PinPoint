@@ -8,9 +8,12 @@ PinPoint : cool name, kinda boring app.
 
 an app made to run during gameplay of virtual pinball and (probably) allows more precision by making shot rhythm (probably) easier to hone.
 
-Also (probably) makes flipper shots more measurable rather than purely muscle memory/feeling.
+what it does is pretty simple. you have it run alongside your pinball game, and while your flipper is down, a value shown onscreen will increment, while making audible clicks everytime after a specified amount of incrementations is made. 
+flipping the flipper will stop the value.
 
-Allows more specific documentation of shot locations than just a vague "center of flipper but a bit late-ish". 
+this (probably) makes flipper shots more measurable rather than purely muscle memory/feeling.
+
+this also allows more specific documentation of shot locations than just a vague "center of flipper but a bit late-ish". 
 You can now say "flipper center, 5 clicks, 53."
 
 now, of course, muscle memory and honing skills via actually playing and getting a feel of things is always better than depending on some rough program. 
